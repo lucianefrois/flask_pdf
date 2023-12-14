@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <center><h1>Bem-vindo à Página Inicial</h1></center>
+  <br>
+  <br>
+    
+    <a href="{{ url_for('pagamentos') }}"><button>Ir para Relatórios</button></a>
+    <a href="{{ url_for('adicionar_cliente') }}"><button>Adicionar Cliente</button></a>
+    
+    <!-- Adicione o novo botão -->
+    <button id="automateButton">Automatizar Processo</button>
+
+    <!-- Inclua o código JavaScript para lidar com o clique do botão -->
+    <script>
+        $(document).ready(function() {
+            $("#automateButton").click(function() {
+                // Faça uma solicitação assíncrona para acionar a automação
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url_for('automatizar_processo') }}",
+                    success: function(response) {
+                        alert("Processo de automação acionado com sucesso!");
+                    },
+                    error: function(error) {
+                        alert("Erro ao acionar o processo de automação!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

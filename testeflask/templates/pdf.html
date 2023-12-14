@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+
+
+    <title>Pagamentos</title>
+</head>
+<body>
+    <center><h1>Relatórios de Pagamentos</h1></center>
+
+    <!-- Formulário para gerar relatório individual -->
+    <h2>Relatório Individual</h2>
+    <form action="/gerar_pdf" method="post">
+        <label for="nome">Cliente ou Despachante:</label>
+        <select name="nome" id="nome">
+            {% for item in nomes %}
+                <option value="{{ item.Cliente_Despachante }}">{{ item.Cliente_Despachante }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Gerar PDF Individual</button>
+    </form>
+
+    <!-- Formulário para gerar relatório geral -->
+    <h2>Relatório Geral</h2>
+    <form action="/gerar_pdf_geral" method="post">
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" name="data_inicio" id="data_inicio" required>
+        <label for="data_fim">Data de Fim:</label>
+        <input type="date" name="data_fim" id="data_fim" required>
+        <button type="submit">Gerar Relatório Geral</button>
+    </form>
+</body>
+</html>
+
